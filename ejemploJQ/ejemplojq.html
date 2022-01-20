@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+    * {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        body {
+            background-color: #000;
+            color: white;
+        
+        }
+        ul{
+            margin-right: 45px;
+        }
+        li{
+            list-style-type: none;
+        }
+        input[type="button"]{
+            background-color: black; color: white; border:solid 1px #ccc; border-radius: 20px;
+        }
+
+    </style>
+    <title>EVENTOS+DOM+OBJETOS NAVEGADOR. EJEMPLOS I</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+</head><!-- Ponemos el link de la versión JQuery-->
+
+<body>
+    <h1>EJEMPLO JQ</h1>
+     <hr />
+    <h2>Ejemplo 1</h2>
+    <p>Hola, ¿tu nombre y año de nacimiento?</p>
+    Nombre: <input type="text" id="nombre" >
+    Año de nacimiento: <input type="number" id="fechanac" name="fechanac" min="1999" max="2019">
+    <input type="button" value="saludar" />
+    <p id="salida"></p> <!-- Aquí se mostrará lo que pide el ejercicio -->
+    <hr />
+    <h2>Ejemplo 2</h2>
+
+    <p>
+    <ul>
+        <li>Lunes</li>
+        <li>Martes</li>
+        <li>Miércoles</li>
+        <li>Jueves</li>
+        <li>Viernes</li>
+    </ul>
+    </p>
+	<input id="anyadir" type="button" value="Insertar"  />
+    <input id="borrarPrimero" type="button" value="Borrar primer elemento de la lista" />
+    <input id="borrarUltimo" type="button" value="Borrar último elemento de la lista" />
+   
+</body>
+</html>
+<script>
+    //METEMOS NUESTRO CÓDIGO JQUERY EN LA FUNCION READY
+    $(document).ready(function(){// $(document). ready(function(){  }); Ejecuta funciones una vez cargada en su totalidad la página web
+        /*damos funcionalidad al botón saludar*/
+        $("[value='saludar']").click(function(){//utilizamos el valor value sin utilizar el id, le añadimos el .click para el boton
+            /*versión 1: usando id*/
+            let textoMensaje="hola "+$("#nombre").val()+" !!";
+            alert(textoMensaje);//Manda el primer alert
+            let fecha = $("#fechanac").val(); // devuelve el primer valor del elemento que coincide con el valor de la propiedad
+            let fechaActual = new Date();
+            if(fechaActual.getFullYear()-fecha <18)
+                textoMensaje += "Eres menor de edad";
+                else
+                textoMensaje += "Eres mayor de edad";
+                $("[value='saludar']").after("<p>"+textoMensaje+"</p>");//Manda el mensaje
+        });
+
+        $("#anyadir").click(function(){
+            let nuevoElem=prompt("Nuevo elemento de la lista");
+            $("ul").append("<li>"+nuevoElem+"</li>");//nos permite agregar nuevos elementos a una lista.
+
+        });
+        $("#borrarPrimero").click(function(){
+            $("li:first-child").remove();//para borrar el primero poner first
+
+        });
+        $("#borrarUltimo").click(function(){
+            $("li:last-child").remove();
+
+        });
+
+    });
+    
+</script>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 3</title>
+    <style type="text/css">
+        * {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        body {
+            width: 50%;
+            margin:0 auto;
+            background-color: #000;
+            color: white;
+        }
+        a{
+            color: white;
+        }
+        input[type="button"]{
+            background-color: black; color: white; border:solid 1px #ccc; border-radius: 20px;
+        }
+        
+    </style>
+    
+</head >
+
+<body onload="negro()">
+    <h1>Ejemplo JS</h1>
+    <h2>Enlaces a varias páginas</h2>
+    <section>   
+        <p><a href="http://www.centrosanluis.com" target="_blank">Centro San Luis</a></p>
+        <p><a href="http://www.w3schools.com" target="_blank">w3schools</a></p>
+        <p><a href="https://es.stackoverflow.com/" target="_blank">StackOverFlow</a></p>
+        <p><a href="#">otros enlaces de interés</a></p>
+    </section>
+    <input type="button" value="Ver Direcciones URL" onclick="Ver()"/>
+    <input type="button" value="cambiar estilo pares" onclick="Par()"/>
+    <input type="button" value="cambiar nombre enlace" onclick="Nombre()"/>
+    <input type="button" value="resetear" onclick="Res()"/>
+    <h2>Direcciones URL</h2>
+    <section></section>
+
+
+</body></html>
+<script>
+    function Ver(){
+        document.getElementsByTagName("section")[1].innerHTML="<p>https://www.centrosanluis.com/</p><p>http://www.w3schools.com</p><p>https://es.stackoverflow.com/</p><p>https://www.google.com/search?client=firefox-b-d&q=images</p>";
+
+    }
+    function Par(){
+
+        document.getElementsByTagName("p")[0].style.backgroundColor="blue";
+        document.getElementsByTagName("a")[0].style.textDecoration="none";
+        document.getElementsByTagName("a")[0].style.color="white";
+        document.getElementsByTagName("a")[2].style.textDecoration="none";
+        document.getElementsByTagName("p")[2].style.backgroundColor="blue";
+        document.getElementsByTagName("a")[2].style.color="white";
+
+    }
+    function Nombre(){
+        document.getElementsByTagName("p")[3].innerHTML="<p><a href=https://es.stackoverflow.com/>Hola</a></p>";
+        
+    }
+    function Res(){
+        location.reload();
+
+
+    }
+    
+
+
+
+
+
+
+</script>

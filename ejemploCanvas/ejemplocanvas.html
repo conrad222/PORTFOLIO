@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <style type="text/css">
+        * {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        body {
+            width: 50%;
+            margin:0 auto;
+            background-color: #000;
+            color: white;
+        }
+    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo 1</title>
+</head>
+<body onload="cargarDibujo()">
+    <h1>Ejemplo Canvas</h1>
+    <canvas id="myCanvas" width="300" height="300">
+        Este navegador no soporta canvas
+    </canvas>
+
+    
+</body>
+</html>
+<script>
+    function cargarDibujo(){
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");// Con 2d representa un contexto de renderizado de dos dimensiones.
+        ctx.strokeStyle="#DFCA74"; // esto es el color de la línea, con él vamos a dibujar la silueta de la línea
+        ctx.lineWidth=10;//anchura de la línea
+        ctx.beginPath();// sirve para decirle al contexto del canvas que vamos a empezar a dibujar un camino.
+        for(let fila=0; fila<=300;fila+=30){// el +30 es para que haya 30 líneas 
+            ctx.moveTo(0, fila);//mueve la fila a a la posicion 0 del mapa
+            ctx.lineTo(300, fila);// 300 es para que se posicione como una fila en la escala (x,y) la x
+        }
+        for(let columna=0; columna<=300;columna+=30){//el +30 es para que haya 30 líneas
+            ctx.moveTo(columna, 0);//mueve la fila a a la posicion 0 del mapa
+            ctx.lineTo(columna, 300);//  es para que se posicione como una columna en la escala (x,y) la y
+        }
+        ctx.stroke();// Aquí dibuja la silueta
+
+    }
+
+
+</script>
